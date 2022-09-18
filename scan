@@ -1,0 +1,10 @@
+#bash scan script
+i=0
+for (( ; ; )); do
+ nmap $((1+RANDOM%255)).$((1+RANDOM%255)).$((1+RANDOM%255)).1/24 -p 23 -n --open -Pn &
+((i=i+1))
+if(($i%10==0)); then
+  sleep 30s
+  ((i=0))
+fi
+done
